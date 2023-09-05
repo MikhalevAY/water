@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\v1\CityController;
+use App\Http\Controllers\Api\v1\MonthController;
+use App\Http\Controllers\Api\v1\StaffStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
+    Route::get('/cities', [CityController::class, 'index']);
+    Route::get('/months', [MonthController::class, 'index']);
+    Route::get('/staff-statuses', [StaffStatusController::class, 'index']);
 });

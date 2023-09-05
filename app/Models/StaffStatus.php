@@ -13,4 +13,8 @@ class StaffStatus extends Model
         'status',
         'code'
     ];
+
+    protected $hidden = [
+        'id'
+    ];
 }

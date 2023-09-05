@@ -2,12 +2,30 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class Customer extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+
+    protected $fillable = [
+        'account',
+        'last_name',
+        'name',
+        'patronymic',
+        'iin',
+        'registration_city_id',
+        'registration_address',
+        'residence_city_id',
+        'residence_address',
+        'amount_of_people',
+        'connected_at'
+    ];
+
+    protected function serializeDate(DateTimeInterface $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }
