@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->string('name', 80);
             $table->string('code', 12)->nullable()->index();
         });

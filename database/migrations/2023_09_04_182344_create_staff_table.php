@@ -14,8 +14,10 @@ return new class extends Migration
             $table->string('name', 200);
             $table->string('patronymic', 200);
             $table->bigInteger('iin')->nullable()->index();
-            $table->bigInteger('water_supplier_bin');
+            $table->bigInteger('water_supplier_bin')->nullable();
             $table->integer('status_code');
+            $table->string('password')->nullable();
+            $table->timestamp('last_auth')->nullable();
             $table->timestamps();
         });
 

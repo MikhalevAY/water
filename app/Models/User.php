@@ -4,15 +4,17 @@ namespace App\Models;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Staff extends Model
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
+
+    protected $table = 'staff';
 
     protected $fillable = [
         'last_name',
@@ -20,8 +22,28 @@ class Staff extends Model
         'patronymic',
         'iin',
         'water_supplier_bin',
-        'status_code'
+        'status_code',
+        'password',
+        'last_auth'
     ];
+
+    protected $hidden = [
+        'password'
+    ];
+
+    protected $casts = [
+        'last_auth' => 'datetime',
+    ];
+
+    public function getJWTIdentifier(): mixed
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
 
     public function waterSupplier(): BelongsTo
     {
@@ -30,7 +52,7 @@ class Staff extends Model
 
     public function status(): HasOne
     {
-        return $this->hasOne(StaffStatus::class, 'status_code', 'code');
+        return $this->hasOne(UserStatus::class, 'status_code', 'code');
     }
 
     protected function serializeDate(DateTimeInterface $date): string

@@ -15,4 +15,11 @@ class CityController extends Controller
             'cities' => City::all()
         ]);
     }
+
+    public function byCity(?int $cityId = null): JsonResponse
+    {
+        return response()->json([
+            'cities' => City::query()->where('city_id', $cityId)->get()
+        ]);
+    }
 }

@@ -33,7 +33,7 @@ class MeterData extends Model
 
     public function staff(): BelongsTo
     {
-        return $this->belongsTo(Staff::class, 'staff_iin', 'iin');
+        return $this->belongsTo(User::class, 'staff_iin', 'iin');
     }
 
     protected function serializeDate(DateTimeInterface $date): string

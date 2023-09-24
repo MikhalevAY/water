@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserStatus;
+use App\Models\City;
+use App\Models\Customer;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StaffStatusController extends Controller
+class CustomerController extends Controller
 {
     public function index(): JsonResponse
     {
         return response()->json([
-            'staff_statuses' => UserStatus::all()
+            'customers' => Customer::all()
         ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\StaffStatus;
+use App\Models\UserStatus;
 use Illuminate\Database\Seeder;
 
 class StaffStatusSeeder extends Seeder
@@ -16,6 +16,6 @@ class StaffStatusSeeder extends Seeder
             ['code' => 40, 'status' => 'Отключен'],
         ];
 
-        StaffStatus::query()->insert($statuses);
+        UserStatus::query()->insert($statuses);
     }
 }

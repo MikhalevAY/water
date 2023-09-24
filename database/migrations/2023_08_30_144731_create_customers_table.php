@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('account')->index();
+            $table->bigInteger('account')->index()->unique();
             $table->string('last_name', 200);
             $table->string('name', 200);
             $table->string('patronymic', 200)->nullable();
