@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
             StaffStatusSeeder::class,
             StaffSeeder::class,
             CustomerSeeder::class,
-            CitySeeder::class
+            CitySeeder::class,
+            TariffSeeder::class,
+            WaterSupplierSeeder::class
         ]);
     }
 }

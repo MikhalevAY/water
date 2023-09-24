@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\v1\CityController;
 use App\Http\Controllers\Api\v1\CustomerController;
 use App\Http\Controllers\Api\v1\MonthController;
 use App\Http\Controllers\Api\v1\StaffStatusController;
+use App\Http\Controllers\Api\v1\TariffController;
+use App\Http\Controllers\Api\v1\WaterSupplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
@@ -21,6 +23,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
     });
 
     Route::get('/months', [MonthController::class, 'index']);
+    Route::get('/tariffs', [TariffController::class, 'index']);
+    Route::get('/water-suppliers', [WaterSupplierController::class, 'index']);
     Route::get('/staff-statuses', [StaffStatusController::class, 'index']);
 
     Route::get('/customers', [CustomerController::class, 'index']);
