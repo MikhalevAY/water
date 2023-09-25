@@ -28,32 +28,32 @@ class AuthController extends Controller
         if ($user->status_code == UserStatus::STATUS_NEW) {
             return response()->json([
                 'allowed_to_set_password' => true,
-                'message' => __('auth.allowed_to_set_password'),
+                'message' => __('l10n_auth_allowed_to_set_password'),
             ]);
         }
 
         if ($user->status_code == UserStatus::STATUS_ACTIVE && !isset($credentials['password'])) {
             return response()->json([
-                'message' => __('auth.fill_all_fields')
+                'message' => __('l10n_auth_fill_all_fields')
             ], Response::HTTP_BAD_REQUEST);
         }
 
         if ($user->status_code == UserStatus::STATUS_PASSWORD_RESTORE) {
             return response()->json([
                 'password_restore_process' => true,
-                'message' => __('auth.password_restore_process'),
+                'message' => __('l10n_auth_password_restore_process'),
             ]);
         }
 
         if ($user->status_code == UserStatus::STATUS_INACTIVE) {
             return response()->json([
                 'user_deactivated' => true,
-                'message' => __('auth.user_deactivated'),
+                'message' => __('l10n_auth_user_deactivated'),
             ]);
         }
 
         if (!$token = $this->authService->login($credentials)) {
-            return response()->json(['message' => __('auth.failed')], Response::HTTP_BAD_REQUEST);
+            return response()->json(['message' => __('l10n_auth_failed')], Response::HTTP_BAD_REQUEST);
         }
 
         return response()->json([
@@ -67,14 +67,14 @@ class AuthController extends Controller
         $this->authService->setPassword($request->validated());
 
         return response()->json([
-            'message' => __('auth.password_was_set')
+            'message' => __('l10n_auth_password_was_set')
         ]);
     }
 
     public function logout(): JsonResponse
     {
         auth()->logout();
-        return response()->json(['message' => __('auth.logout')]);
+        return response()->json(['message' => __('l10n_auth_logout')]);
     }
 
     public function refresh(): JsonResponse

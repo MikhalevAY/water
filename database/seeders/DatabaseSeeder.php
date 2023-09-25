@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
             CustomerSeeder::class,
             CitySeeder::class,
             TariffSeeder::class,
-            WaterSupplierSeeder::class
+            WaterSupplierSeeder::class,
+            CounterSeeder::class,
+            MeterDataSeeder::class
         ]);
     }
 }

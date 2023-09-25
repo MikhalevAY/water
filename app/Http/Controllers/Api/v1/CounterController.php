@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Month;
+use App\Models\Counter;
 use Illuminate\Http\JsonResponse;
 
-class MonthController extends Controller
+class CounterController extends Controller
 {
     public function index(): JsonResponse
     {
         return response()->json([
-            'months' => Month::ordered()->get()
+            'counters' => Counter::all(),
         ]);
     }
 }

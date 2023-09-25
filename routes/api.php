@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\CityController;
+use App\Http\Controllers\Api\v1\CounterController;
 use App\Http\Controllers\Api\v1\CustomerController;
 use App\Http\Controllers\Api\v1\MonthController;
 use App\Http\Controllers\Api\v1\StaffStatusController;
@@ -26,6 +27,6 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
     Route::get('/tariffs', [TariffController::class, 'index']);
     Route::get('/water-suppliers', [WaterSupplierController::class, 'index']);
     Route::get('/staff-statuses', [StaffStatusController::class, 'index']);
-
+    Route::get('/counters', [CounterController::class, 'index']);
     Route::get('/customers', [CustomerController::class, 'index']);
 });
