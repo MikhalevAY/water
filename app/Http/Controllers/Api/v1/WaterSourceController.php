@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tariff;
+use App\Models\WaterSource;
 use Illuminate\Http\JsonResponse;
 
-class TariffController extends Controller
+class WaterSourceController extends Controller
 {
     public function index(): JsonResponse
     {
         return response()->json([
-            'tariffs' => Tariff::all(),
+            'water_suppliers' => WaterSource::all(),
         ]);
     }
 }

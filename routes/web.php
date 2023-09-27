@@ -1,12 +1,19 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Todo remove on stage/prod
+
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
+
+define('STDIN', fopen("php://stdin", "r"));
+
+Route::get('/artisan/{command}', function (string $command) {
+    switch ($command) {
+        case 'db' :
+            Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+            break;
+        case 'storage':
+            Artisan::call('storage:link');
+            break;
+    }
+});

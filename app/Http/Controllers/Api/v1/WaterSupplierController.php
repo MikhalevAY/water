@@ -11,7 +11,7 @@ class WaterSupplierController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'cities' => WaterSupplier::all(),
+            'water_suppliers' => WaterSupplier::all(),
         ]);
     }
 }

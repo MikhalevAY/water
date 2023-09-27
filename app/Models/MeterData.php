@@ -6,10 +6,13 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class MeterData extends Model
 {
     use HasFactory;
+
+    public const PER_PAGE = 100;
 
     protected $fillable = [
         'customer_account',
@@ -34,6 +37,11 @@ class MeterData extends Model
     public function staff(): BelongsTo
     {
         return $this->belongsTo(User::class, 'staff_iin', 'iin');
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(MeterDataPhoto::class);
     }
 
     protected function serializeDate(DateTimeInterface $date): string

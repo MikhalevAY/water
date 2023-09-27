@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('staff_iin')->nullable();
             $table->float('consumed_volume');
             $table->string('counter_serial', 80)->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
 

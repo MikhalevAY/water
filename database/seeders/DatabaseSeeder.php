@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             TariffSeeder::class,
             WaterSupplierSeeder::class,
             CounterSeeder::class,
-            MeterDataSeeder::class
+            MeterDataSeeder::class,
+            WaterSourceSeeder::class
         ]);
     }
 }
