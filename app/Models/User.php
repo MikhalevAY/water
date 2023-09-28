@@ -47,7 +47,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function waterSupplier(): BelongsTo
     {
-        return $this->belongsTo(WaterSupplier::class, 'water_supplier_bin', 'bin');
+        return $this->belongsTo(WaterSupplier::class, 'water_supplier_bin', 'bin')->select('name', 'bin');
     }
 
     public function status(): HasOne

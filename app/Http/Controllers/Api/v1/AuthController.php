@@ -57,7 +57,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'staff' => Auth::user(),
+            'staff' => Auth::user()->load('waterSupplier'),
             'token' => $token,
         ]);
     }
