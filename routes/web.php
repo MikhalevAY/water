@@ -5,7 +5,7 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-define('STDIN', fopen("php://stdin", "r"));
+//define('STDIN', fopen("php://stdin", "r"));
 
 Route::get('/artisan/{command}', function (string $command) {
     switch ($command) {

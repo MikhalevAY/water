@@ -15,6 +15,10 @@ class Month extends Model
         'number'
     ];
 
+    protected $casts = [
+        'number' => 'integer'
+    ];
+
     public function scopeOrdered(Builder $query): void
     {
         $query->orderBy('number', 'asc');

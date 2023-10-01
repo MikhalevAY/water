@@ -17,6 +17,10 @@ class Counter extends Model
         'checked_at'
     ];
 
+    protected $casts = [
+        'customer_account' => 'integer'
+    ];
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_account', 'account');

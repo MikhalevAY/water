@@ -26,6 +26,15 @@ class Customer extends Model
         'connected_at'
     ];
 
+    protected $casts = [
+        'iin' => 'integer',
+        'registration_city_id' => 'integer',
+        'residence_city_id' => 'integer',
+        'amount_of_people' => 'integer',
+        'last_indication' => 'float',
+        'account' => 'integer'
+    ];
+
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');

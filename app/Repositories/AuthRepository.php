@@ -21,8 +21,18 @@ class AuthRepository implements AuthRepositoryInterface
         User::query()
             ->where('iin', $params['iin'])
             ->update([
-                'password' => $params['password'],
+                'password' => bcrypt($params['password']),
                 'status_code' => UserStatus::STATUS_ACTIVE,
+            ]);
+    }
+
+    public function changePasswordRequest(array $params): void
+    {
+        User::query()
+            ->where('iin', $params['iin'])
+            ->update([
+                'password' => null,
+                'status_code' => UserStatus::STATUS_PASSWORD_RESTORE,
             ]);
     }
 }

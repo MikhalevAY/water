@@ -21,6 +21,10 @@ class UserStatus extends Model
         'code'
     ];
 
+    protected $casts = [
+        'code' => 'integer'
+    ];
+
     protected $hidden = [
         'id'
     ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\ChangePasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\SetPasswordRequest;
 use App\Models\User;
@@ -16,7 +17,7 @@ class AuthController extends Controller
 {
     public function __construct(private readonly AuthService $authService)
     {
-        $this->middleware('auth:api', ['except' => ['login', 'setPassword', 'refresh']]);
+        $this->middleware('auth:api', ['except' => ['login', 'setPassword', 'changePassword', 'refresh']]);
     }
 
     public function login(LoginRequest $request): JsonResponse
@@ -34,7 +35,7 @@ class AuthController extends Controller
 
         if ($user->status_code == UserStatus::STATUS_ACTIVE && !isset($credentials['password'])) {
             return response()->json([
-                'message' => __('l10n_auth_fill_all_fields')
+                'message' => __('l10n_auth_fill_all_fields'),
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -62,19 +63,31 @@ class AuthController extends Controller
         ]);
     }
 
+    public function changePassword(ChangePasswordRequest $request): JsonResponse
+    {
+        $this->authService->changePasswordRequest($request->validated());
+
+        return response()->json([
+            'message' => 'l10n_auth_password_change_was_sent'
+        ]);
+    }
+
     public function setPassword(SetPasswordRequest $request): JsonResponse
     {
         $this->authService->setPassword($request->validated());
 
         return response()->json([
-            'message' => __('l10n_auth_password_was_set')
+            'message' => 'l10n_auth_password_was_set',
         ]);
     }
 
     public function logout(): JsonResponse
     {
         auth()->logout();
-        return response()->json(['message' => __('l10n_auth_logout')]);
+
+        return response()->json([
+            'message' => 'l10n_auth_logout'
+        ]);
     }
 
     public function refresh(): JsonResponse

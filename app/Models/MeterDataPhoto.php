@@ -20,6 +20,10 @@ class MeterDataPhoto extends Model
         'path',
     ];
 
+    protected $casts = [
+        'meter_data_id' => 'integer'
+    ];
+
     public function meterData(): BelongsTo
     {
         return $this->belongsTo(MeterData::class);

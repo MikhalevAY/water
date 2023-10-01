@@ -20,7 +20,14 @@ class WaterSupplier extends Model
         'order_number',
         'order_created_at',
         'order_started_at',
-        'water_sources'
+        'water_sources',
+    ];
+
+    protected $casts = [
+        'water_sources' => 'json',
+        'bin' => 'integer',
+        'validity_period' => 'integer',
+        'tariff_id' => 'integer',
     ];
 
     protected function serializeDate(DateTimeInterface $date): string

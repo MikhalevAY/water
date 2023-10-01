@@ -20,6 +20,14 @@ class Result extends Model
         'counter_serial'
     ];
 
+    protected $casts = [
+        'customer_account' => 'integer',
+        'month' => 'integer',
+        'year' => 'integer',
+        'last_indication' => 'float',
+        'total_consumption' => 'float',
+    ];
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_account', 'account');

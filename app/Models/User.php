@@ -24,15 +24,17 @@ class User extends Authenticatable implements JWTSubject
         'water_supplier_bin',
         'status_code',
         'password',
-        'last_auth'
+        'last_auth',
     ];
 
     protected $hidden = [
-        'password'
+        'password',
     ];
 
     protected $casts = [
         'last_auth' => 'datetime',
+        'iin' => 'integer',
+        'status_code' => 'integer'
     ];
 
     public function getJWTIdentifier(): mixed

@@ -11,14 +11,14 @@ class CityController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'cities' => City::all()
+            'regions' => City::query()->with(['districts', 'districts.children'])->get()
         ]);
     }
 
-    public function byCity(?int $cityId = null): JsonResponse
+    public function byRegion(?int $regionId = null): JsonResponse
     {
         return response()->json([
-            'cities' => City::query()->where('city_id', $cityId)->get()
+            'districts' => City::query()->with('children')->where('city_id', $regionId)->get()
         ]);
     }
 }

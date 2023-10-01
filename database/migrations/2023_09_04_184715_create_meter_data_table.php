@@ -14,7 +14,7 @@ return new class extends Migration
             $table->float('indication')->nullable();
             $table->integer('month');
             $table->integer('year');
-            $table->bigInteger('staff_iin')->nullable();
+            $table->unsignedBigInteger('staff_iin')->nullable();
             $table->float('consumed_volume');
             $table->string('counter_serial', 80)->nullable();
             $table->text('comment')->nullable();

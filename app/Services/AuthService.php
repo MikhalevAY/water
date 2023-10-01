@@ -25,4 +25,9 @@ class AuthService
     {
         $this->authRepository->setPassword($params);
     }
+
+    public function changePasswordRequest(array $params): void
+    {
+        $this->authRepository->changePasswordRequest($params);
+    }
 }

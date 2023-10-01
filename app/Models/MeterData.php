@@ -24,6 +24,15 @@ class MeterData extends Model
         'counter_serial'
     ];
 
+    protected $casts = [
+        'customer_account' => 'integer',
+        'indication' => 'float',
+        'month' => 'integer',
+        'year' => 'integer',
+        'staff_iin' => 'integer',
+        'consumed_volume' => 'float',
+    ];
+
     public function account(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_account', 'account');

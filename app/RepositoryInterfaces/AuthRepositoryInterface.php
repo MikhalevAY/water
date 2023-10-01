@@ -12,4 +12,6 @@ interface AuthRepositoryInterface
     public function updateLastAuth(): void;
 
     public function setPassword(array $params): void;
+
+    public function changePasswordRequest(array $params): void;
 }

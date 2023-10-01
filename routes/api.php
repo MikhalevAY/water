@@ -14,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
     Route::controller(AuthController::class)->prefix('auth')->group(function () {
+        Route::post('/change-password', 'changePassword');
         Route::post('/set-password', 'setPassword');
         Route::post('/login', 'login');
         Route::post('/logout', 'logout');
         Route::get('/refresh-token', 'refresh');
     });
 
-    Route::controller(CityController::class)->prefix('cities')->group(function(){
+    Route::controller(CityController::class)->prefix('locations')->group(function(){
         Route::get('/', 'index');
-        Route::get('/by-city/{cityId?}', 'byCity');
+        Route::get('/by-region/{regionId?}', 'byRegion');
     });
 
     Route::controller(MeterDataController::class)->prefix('meter-data')->group(function(){

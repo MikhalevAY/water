@@ -15,7 +15,12 @@ class WaterSource extends Model
         'name',
         'location',
         'ipvu',
-        'water_suppliers'
+        'water_suppliers',
+    ];
+
+    protected $casts = [
+        'water_source_id' => 'integer',
+        'water_suppliers' => 'json',
     ];
 
     protected function serializeDate(DateTimeInterface $date): string
