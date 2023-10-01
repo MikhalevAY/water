@@ -28,7 +28,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
 
     Route::controller(MeterDataController::class)->prefix('meter-data')->group(function(){
         Route::get('/{page?}', 'index');
-        Route::post('/meter-data/store', 'store')->middleware('auth:api');
+        Route::post('/store', 'store')->middleware('auth:api');
     });
 
     Route::get('/months', [MonthController::class, 'index']);
