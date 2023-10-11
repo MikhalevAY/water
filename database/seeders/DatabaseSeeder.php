@@ -11,15 +11,16 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MonthSeeder::class,
             StaffStatusSeeder::class,
-            StaffSeeder::class,
             ConsumeTypeSeeder::class,
             WaterSupplierSeeder::class,
-            CustomerSeeder::class,
             CitySeeder::class,
+            CustomerSeeder::class,
             TariffSeeder::class,
+            StaffSeeder::class,
             CounterSeeder::class,
             MeterDataSeeder::class,
-            WaterSourceSeeder::class
+            WaterSourceSeeder::class,
+            ResultSeeder::class
         ]);
     }
 }

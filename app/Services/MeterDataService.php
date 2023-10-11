@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\MeterData;
 use App\Models\MeterDataPhoto;
+use App\RepositoryInterfaces\MeterDataRepositoryInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Arr;
@@ -11,20 +12,20 @@ use Intervention\Image\Facades\Image;
 
 class MeterDataService
 {
-    public function getPaginated(int $page): LengthAwarePaginator
+    public function __construct(private readonly MeterDataRepositoryInterface $repository)
     {
-        return MeterData::query()
-            ->with('photos')
-            ->select('*')
-            ->orderBy('id', 'desc')
-            ->paginate(perPage: MeterData::PER_PAGE, page: $page);
+    }
+
+    public function getPaginated(int $bin, int $page): LengthAwarePaginator
+    {
+        return $this->repository->getPaginated($bin, $page);
     }
 
     public function store(array $data): array
     {
-        $meterData = MeterData::create(Arr::except($data, 'photos'));
+        $meterData = $this->repository->store(Arr::except($data, 'photos'));
 
-        if ($meterData && isset($data['photos'])) {
+        if (isset($data['photos'])) {
             foreach ($data['photos'] as $photo) {
                 $this->storePhoto($meterData, $photo);
             }

@@ -3,12 +3,15 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\WaterSupplier;
 use Illuminate\Database\Seeder;
 
 class StaffSeeder extends Seeder
 {
     public function run(): void
     {
+        $waterSupplier = WaterSupplier::find(1);
+
         User::query()->create([
             'last_name' => 'Иванов',
             'name' => 'Иван',
@@ -16,7 +19,8 @@ class StaffSeeder extends Seeder
             'iin' => '123321123321',
             'status_code' => 20,
             'password' => bcrypt('123'),
-            'created_at' => now()
+            'created_at' => now(),
+            'water_supplier_bin' => $waterSupplier->bin
         ]);
 
         User::query()->create([

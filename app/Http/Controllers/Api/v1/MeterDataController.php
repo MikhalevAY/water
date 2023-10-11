@@ -15,7 +15,7 @@ class MeterDataController extends Controller
 
     public function index(int $page = 1): JsonResponse
     {
-        $paginated = $this->meterDataService->getPaginated($page);
+        $paginated = $this->meterDataService->getPaginated(auth()->user()->waterSupplier->bin, $page);
 
         return response()->json([
             'pages' => $paginated->lastPage(),

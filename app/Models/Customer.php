@@ -20,9 +20,9 @@ class Customer extends Model
         'patronymic',
         'iin',
         'water_supplier_id',
-        'registration_city_id',
+        'registration_city_code',
         'registration_address',
-        'residence_city_id',
+        'residence_city_code',
         'residence_address',
         'amount_of_people',
         'connected_at',
@@ -31,8 +31,8 @@ class Customer extends Model
 
     protected $casts = [
         'iin' => 'integer',
-        'registration_city_id' => 'integer',
-        'residence_city_id' => 'integer',
+        'registration_city_code' => 'integer',
+        'residence_city_code' => 'integer',
         'amount_of_people' => 'integer',
         'last_indication' => 'float',
         'account' => 'integer'

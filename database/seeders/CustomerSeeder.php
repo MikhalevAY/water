@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Customer;
 use App\Models\WaterSupplier;
 use Illuminate\Database\Seeder;
@@ -12,17 +13,18 @@ class CustomerSeeder extends Seeder
     {
         $customers = [];
 
-        for ($i = 0; $i < 1; $i++) {
-            $waterSupplier = WaterSupplier::find(rand(1,100));
+        for ($i = 0; $i < 200; $i++) {
+            $waterSupplier = WaterSupplier::find(rand(1,10));
+            $city = City::find(rand(1, 10));
             $customers[] = [
                 'account' => rand(1000000, 9999999),
                 'last_name' => fake()->lastName,
                 'name' => fake()->name,
                 'iin' => rand(111111111111, 999999999999),
                 'water_supplier_bin' => $waterSupplier->bin,
-                'registration_city_id' => rand(1, 100),
+                'registration_city_code' => $city->code,
                 'registration_address' => fake()->address,
-                'residence_city_id' => rand(1, 100),
+                'residence_city_code' => $city->code,
                 'residence_address' => fake()->address,
                 'amount_of_people' => rand(1, 5),
                 'connected_at' => now(),

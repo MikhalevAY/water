@@ -11,7 +11,7 @@ class CityController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'localities' => City::query()->with(['districts', 'districts.children'])->get()
+            'localities' => City::query()->select(['name', 'code'])->get()
         ]);
     }
 }

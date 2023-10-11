@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('patronymic', 200)->nullable();
             $table->bigInteger('iin');
             $table->unsignedBigInteger('water_supplier_bin');
-            $table->integer('registration_city_id')->nullable();
+            $table->integer('registration_city_code')->nullable();
             $table->string('registration_address', 500)->nullable();
-            $table->integer('residence_city_id')->nullable();
+            $table->integer('residence_city_code')->nullable();
             $table->string('residence_address', 500)->nullable();
             $table->integer('amount_of_people');
             $table->timestamp('connected_at');
