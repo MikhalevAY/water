@@ -16,6 +16,7 @@ class Result extends Model
         'month',
         'year',
         'last_indication',
+        'last_consumption',
         'total_consumption',
         'counter_serial'
     ];
@@ -25,6 +26,7 @@ class Result extends Model
         'month' => 'integer',
         'year' => 'integer',
         'last_indication' => 'float',
+        'last_consumption' => 'float',
         'total_consumption' => 'float',
     ];
 

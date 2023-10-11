@@ -14,7 +14,6 @@ class WaterSource extends Model
         'water_source_id',
         'name',
         'location',
-        'ipvu',
         'water_suppliers',
     ];
 

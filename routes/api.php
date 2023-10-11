@@ -23,7 +23,6 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
 
     Route::controller(CityController::class)->prefix('locations')->group(function(){
         Route::get('/', 'index');
-        Route::get('/by-region/{regionId?}', 'byRegion');
     });
 
     Route::controller(MeterDataController::class)->prefix('meter-data')->group(function(){

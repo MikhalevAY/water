@@ -14,6 +14,7 @@ return new class extends Migration
             $table->integer('month');
             $table->integer('year');
             $table->float('last_indication')->nullable();
+            $table->float('last_consumption')->nullable();
             $table->float('total_consumption');
             $table->string('counter_serial', 80)->nullable();
             $table->timestamps();

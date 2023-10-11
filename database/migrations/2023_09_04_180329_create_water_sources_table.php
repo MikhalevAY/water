@@ -13,7 +13,6 @@ return new class extends Migration
             $table->bigInteger('water_source_id')->index();
             $table->string('name', 80);
             $table->string('location', 80);
-            $table->string('ipvu', 80);
             $table->json('water_suppliers');
             $table->timestamps();
         });

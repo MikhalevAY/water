@@ -12,10 +12,11 @@ class DatabaseSeeder extends Seeder
             MonthSeeder::class,
             StaffStatusSeeder::class,
             StaffSeeder::class,
+            ConsumeTypeSeeder::class,
+            WaterSupplierSeeder::class,
             CustomerSeeder::class,
             CitySeeder::class,
             TariffSeeder::class,
-            WaterSupplierSeeder::class,
             CounterSeeder::class,
             MeterDataSeeder::class,
             WaterSourceSeeder::class

@@ -14,6 +14,7 @@ class MeterDataService
     public function getPaginated(int $page): LengthAwarePaginator
     {
         return MeterData::query()
+            ->with('photos')
             ->select('*')
             ->orderBy('id', 'desc')
             ->paginate(perPage: MeterData::PER_PAGE, page: $page);
@@ -31,7 +32,7 @@ class MeterDataService
 
         return [
             'message' => 'l10n_meter_data_stored',
-            'meterData' => $meterData->load('photos'),
+            'meter_data' => $meterData->load('photos'),
         ];
     }
 

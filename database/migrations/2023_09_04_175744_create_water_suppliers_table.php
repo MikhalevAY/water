@@ -12,14 +12,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('bin')->index();
             $table->string('name', 300);
-            $table->string('contract_number', 200);
-            $table->timestamp('enclosed_at');
-            $table->integer('validity_period');
-            $table->integer('tariff_id');
-            $table->string('order_number', 200);
-            $table->timestamp('order_created_at');
-            $table->timestamp('order_started_at');
-            $table->json('water_sources');
+            $table->string('contract_number', 200)->nullable();
+            $table->timestamp('enclosed_at')->nullable();
+            $table->integer('validity_period')->nullable();
+            $table->string('order_number', 200)->nullable();
+            $table->timestamp('order_created_at')->nullable();
+            $table->timestamp('order_started_at')->nullable();
+            $table->json('water_sources')->nullable();
             $table->timestamps();
         });
     }

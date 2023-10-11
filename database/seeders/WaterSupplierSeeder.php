@@ -18,7 +18,6 @@ class WaterSupplierSeeder extends Seeder
                 'contract_number' => Str::random(8),
                 'enclosed_at' => fake()->date,
                 'validity_period' => rand(1, 12),
-                'tariff_id' => rand(1, 10),
                 'order_number' => '#' . Str::random(12),
                 'order_created_at' => fake()->date,
                 'order_started_at' => fake()->date,

@@ -21,7 +21,8 @@ class MeterData extends Model
         'year',
         'staff_iin',
         'consumed_volume',
-        'counter_serial'
+        'counter_serial',
+        'comment',
     ];
 
     protected $casts = [

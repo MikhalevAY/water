@@ -15,6 +15,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'customer_account' => 'required|exists:customers,account',
+            'comment' => 'nullable|string',
             'indication' => 'nullable',
             'month' => 'required|int|min:1|max:12',
             'year' => 'required',

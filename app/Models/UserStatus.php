@@ -18,14 +18,14 @@ class UserStatus extends Model
 
     protected $fillable = [
         'status',
-        'code'
+        'code',
     ];
 
     protected $casts = [
-        'code' => 'integer'
+        'code' => 'integer',
     ];
 
     protected $hidden = [
-        'id'
+        'id',
     ];
 }

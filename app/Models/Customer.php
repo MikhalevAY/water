@@ -6,6 +6,7 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
@@ -18,12 +19,14 @@ class Customer extends Model
         'name',
         'patronymic',
         'iin',
+        'water_supplier_id',
         'registration_city_id',
         'registration_address',
         'residence_city_id',
         'residence_address',
         'amount_of_people',
-        'connected_at'
+        'connected_at',
+        'consume_type_id'
     ];
 
     protected $casts = [
@@ -43,6 +46,11 @@ class Customer extends Model
     public function meterData(): HasMany
     {
         return $this->hasMany(MeterData::class, 'customer_account', 'account');
+    }
+
+    public function waterSupplier(): BelongsTo
+    {
+        return $this->belongsTo(WaterSupplier::class);
     }
 
     public function scopeWithLastMeterData(Builder $builder) : Builder

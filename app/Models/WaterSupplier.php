@@ -16,7 +16,6 @@ class WaterSupplier extends Model
         'contract_number',
         'enclosed_at',
         'validity_period',
-        'tariff_id',
         'order_number',
         'order_created_at',
         'order_started_at',
@@ -27,7 +26,6 @@ class WaterSupplier extends Model
         'water_sources' => 'json',
         'bin' => 'integer',
         'validity_period' => 'integer',
-        'tariff_id' => 'integer',
     ];
 
     protected function serializeDate(DateTimeInterface $date): string
