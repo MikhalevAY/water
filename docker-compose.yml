@@ -1,0 +1,52 @@
+version: "4"
+
+services:
+    app:
+        build:
+            args:
+                user: watermeter
+                uid: 1001
+            context: ./
+            dockerfile: docker-compose/Dockerfile
+        image: php
+        container_name: watermeter_php
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/php/php.ini:/usr/local/etc/php/conf.d/local.ini
+            - /home/watermeter/etc/:/etc/
+        networks:
+            - watermeter
+
+    mysql:
+        image: mysql:8.0
+        container_name: watermeter_mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: watermeter
+            MYSQL_USER: watermeter
+            MYSQL_PASSWORD: 1Q2w3e4r5t!
+        ports:
+            - "3390:3306"
+        volumes:
+            - './docker/db/data:/var/lib/mysql'
+            - './docker/db/my.cnf:/etc/mysql/conf.d/my.cnf'
+            - './docker/db/sql:/docker-entrypoint-initdb.d'
+
+    nginx:
+        image: nginx:latest
+        container_name: watermeter_nginx
+        restart: unless-stopped
+        ports:
+            - "8190:80"
+            - "8443:443"
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - watermeter
+
+networks:
+    watermeter:
+        driver: bridge
