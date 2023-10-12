@@ -12,22 +12,14 @@ class ResultRepository implements ResultRepositoryInterface
     {
         $currentMonth = (int)date('m');
 
-        dd(Result::query()
-            ->selectRaw('SUM(results.total_consumption) as total_consumption, results.month')
-            ->leftJoin('customers', 'customers.account', 'results.customer_account')
-            ->whereBetween('results.month', [$currentMonth - 5, $currentMonth - 1])
-            ->where('results.year', date('Y'))
-            ->groupBy('results.month')
-            ->orderBy('results.month')
-            ->toRawSql());
-
         return Result::query()
-            ->selectRaw('SUM(results.total_consumption) as total_consumption, results.month')
+            ->selectRaw('SUM(results.total_consumption) as total_consumption, cities.code, results.month')
             ->leftJoin('customers', 'customers.account', 'results.customer_account')
-            ->where('customers.registration_city_code', $locationCode)
+            ->leftJoin('cities', 'cities.code', 'customers.registration_city_code')
             ->whereBetween('results.month', [$currentMonth - 5, $currentMonth - 1])
             ->where('results.year', date('Y'))
-            ->groupBy('results.month')
+            ->groupBy('results.month', 'cities.code')
+            ->orderBy('cities.code')
             ->orderBy('results.month')
             ->get()
             ->toArray();
