@@ -39,6 +39,6 @@ Route::group(['middleware' => 'api', 'prefix' => 'v1'], function () {
         Route::get('/staff-statuses', [StaffStatusController::class, 'index']);
         Route::get('/counters', [CounterController::class, 'index']);
         Route::get('/customers', [CustomerController::class, 'index']);
-        Route::get('/results/{locationId}', [ResultController::class, 'index']);
+        Route::get('/results', [ResultController::class, 'index']);
     });
 });

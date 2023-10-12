@@ -12,10 +12,10 @@ class ResultController extends Controller
     {
     }
 
-    public function index(int $locationCode): JsonResponse
+    public function index(): JsonResponse
     {
         return response()->json([
-            'results' => $this->repository->chartData($locationCode)
+            'results' => $this->repository->chartData()
         ]);
     }
 }

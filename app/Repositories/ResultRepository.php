@@ -8,9 +8,18 @@ use App\RepositoryInterfaces\ResultRepositoryInterface;
 class ResultRepository implements ResultRepositoryInterface
 {
 
-    public function chartData(int $locationCode): array
+    public function chartData(): array
     {
         $currentMonth = (int)date('m');
+
+        dd(Result::query()
+            ->selectRaw('SUM(results.total_consumption) as total_consumption, results.month')
+            ->leftJoin('customers', 'customers.account', 'results.customer_account')
+            ->whereBetween('results.month', [$currentMonth - 5, $currentMonth - 1])
+            ->where('results.year', date('Y'))
+            ->groupBy('results.month')
+            ->orderBy('results.month')
+            ->toRawSql());
 
         return Result::query()
             ->selectRaw('SUM(results.total_consumption) as total_consumption, results.month')
