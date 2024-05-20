@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('water_suppliers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bin')->index();
+            $table->string('bin')->index();
             $table->string('name', 300);
             $table->string('contract_number', 200)->nullable();
             $table->timestamp('enclosed_at')->nullable();

@@ -41,7 +41,7 @@ class MeterDataService
     {
         $filename = $file->store('photos', 'public');
 
-        Image::make(public_path("storage/{$filename}"))
+        Image::make(public_path("storage/$filename"))
             ->orientate()
             ->fit(MeterDataPhoto::WIDTH, MeterDataPhoto::HEIGHT)
             ->save();

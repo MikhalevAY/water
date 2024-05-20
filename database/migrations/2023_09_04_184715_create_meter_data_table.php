@@ -14,10 +14,34 @@ return new class extends Migration
             $table->float('indication')->nullable();
             $table->integer('month');
             $table->integer('year');
-            $table->unsignedBigInteger('staff_iin')->nullable();
-            $table->float('consumed_volume');
+            $table->string('staff_iin')->nullable();
+            $table->float('consumed_volume')->nullable();
             $table->string('counter_serial', 80)->nullable();
             $table->text('comment')->nullable();
+
+            $table->float('total_consumption')->nullable();
+            $table->float('cost_services_begin')->nullable();
+            $table->float('cost_subsidies_begin')->nullable();
+            $table->float('total_consumption_norm')->nullable();
+            $table->float('total_consumption_col')->nullable();
+            $table->float('total_consumption_epuv')->nullable();
+            $table->float('total_consumption_bz')->nullable();
+            $table->float('total_consumption_cs')->nullable();
+            $table->float('cost_services_begin_norm')->nullable();
+            $table->float('cost_services_begin_col')->nullable();
+            $table->float('cost_services_begin_epuv')->nullable();
+            $table->float('cost_services_begin_bz')->nullable();
+            $table->float('cost_services_begin_cs')->nullable();
+            $table->float('cost_subsidies_begin_norm')->nullable();
+            $table->float('cost_subsidies_begin_col')->nullable();
+            $table->float('cost_subsidies_begin_epuv')->nullable();
+            $table->float('cost_subsidies_begin_bz')->nullable();
+            $table->float('cost_subsidies_begin_cs')->nullable();
+            $table->integer('to_full_pay')->nullable();
+            $table->float('total_consumption_all')->nullable();
+            $table->float('cost_services_begin_all')->nullable();
+            $table->float('cost_subsidies_begin_all')->nullable();
+
             $table->timestamps();
         });
 

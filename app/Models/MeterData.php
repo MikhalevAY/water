@@ -23,6 +23,28 @@ class MeterData extends Model
         'consumed_volume',
         'counter_serial',
         'comment',
+        'total_consumption',
+        'cost_services_begin',
+        'cost_subsidies_begin',
+        'total_consumption_norm',
+        'total_consumption_col',
+        'total_consumption_epuv',
+        'total_consumption_bz',
+        'total_consumption_cs',
+        'cost_services_begin_norm',
+        'cost_services_begin_col',
+        'cost_services_begin_epuv',
+        'cost_services_begin_bz',
+        'cost_services_begin_cs',
+        'cost_subsidies_begin_norm',
+        'cost_subsidies_begin_col',
+        'cost_subsidies_begin_epuv',
+        'cost_subsidies_begin_bz',
+        'cost_subsidies_begin_cs',
+        'to_full_pay',
+        'total_consumption_all',
+        'cost_services_begin_all',
+        'cost_subsidies_begin_all',
     ];
 
     protected $casts = [
@@ -30,8 +52,8 @@ class MeterData extends Model
         'indication' => 'float',
         'month' => 'integer',
         'year' => 'integer',
-        'staff_iin' => 'integer',
         'consumed_volume' => 'float',
+        'to_full_pay' => 'integer',
     ];
 
     public function account(): BelongsTo

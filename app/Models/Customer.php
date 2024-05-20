@@ -19,23 +19,31 @@ class Customer extends Model
         'name',
         'patronymic',
         'iin',
-        'water_supplier_id',
+        'water_supplier_bin',
         'registration_city_code',
         'registration_address',
         'residence_city_code',
         'residence_address',
         'amount_of_people',
         'connected_at',
-        'consume_type_id'
+        'consume_type_id',
+        'registration_address_house',
+        'residence_address_house',
+        'residence_address_appartment',
+        'registration_address_appartment',
+        'notation',
+        'second_counter',
+        'cid',
     ];
 
     protected $casts = [
-        'iin' => 'integer',
         'registration_city_code' => 'integer',
         'residence_city_code' => 'integer',
         'amount_of_people' => 'integer',
         'last_indication' => 'float',
-        'account' => 'integer'
+        'account' => 'integer',
+        'consume_type_id' => 'integer',
+        'water_limit' => 'float',
     ];
 
     protected function serializeDate(DateTimeInterface $date): string
@@ -53,9 +61,9 @@ class Customer extends Model
         return $this->belongsTo(WaterSupplier::class);
     }
 
-    public function scopeWithLastMeterData(Builder $builder) : Builder
+    public function scopeWithLastMeterData(Builder $builder): Builder
     {
-        return $builder->leftJoin('meter_data', function($join) {
+        return $builder->leftJoin('meter_data', function ($join) {
             $join->on('meter_data.customer_account', 'customers.account')
                 ->whereRaw('meter_data.id = (SELECT MAX(id) FROM meter_data WHERE customer_account = customers.account)');
         })

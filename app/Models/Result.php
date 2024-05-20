@@ -18,7 +18,27 @@ class Result extends Model
         'last_indication',
         'last_consumption',
         'total_consumption',
-        'counter_serial'
+        'counter_serial',
+        'cost_services_begin',
+        'cost_subsidies_begin',
+        'total_consumption_norm',
+        'total_consumption_col',
+        'total_consumption_epuv',
+        'total_consumption_bz',
+        'total_consumption_cs',
+        'cost_services_begin_norm',
+        'cost_services_begin_col',
+        'cost_services_begin_epuv',
+        'cost_services_begin_bz',
+        'cost_services_begin_cs',
+        'cost_subsidies_begin_norm',
+        'cost_subsidies_begin_col',
+        'cost_subsidies_begin_epuv',
+        'cost_subsidies_begin_bz',
+        'cost_subsidies_begin_cs',
+        'cost_subsidies_begin_all',
+        'cost_services_begin_all',
+        'total_consumption_all',
     ];
 
     protected $casts = [

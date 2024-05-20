@@ -24,7 +24,6 @@ class WaterSupplier extends Model
 
     protected $casts = [
         'water_sources' => 'json',
-        'bin' => 'integer',
         'validity_period' => 'integer',
     ];
 

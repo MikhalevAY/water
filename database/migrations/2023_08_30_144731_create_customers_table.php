@@ -14,15 +14,26 @@ return new class extends Migration
             $table->string('last_name', 200);
             $table->string('name', 200);
             $table->string('patronymic', 200)->nullable();
-            $table->bigInteger('iin');
-            $table->unsignedBigInteger('water_supplier_bin');
+            $table->string('iin');
+            $table->string('water_supplier_bin');
             $table->integer('registration_city_code')->nullable();
             $table->string('registration_address', 500)->nullable();
             $table->integer('residence_city_code')->nullable();
             $table->string('residence_address', 500)->nullable();
             $table->integer('amount_of_people');
             $table->timestamp('connected_at');
+            $table->double('water_limit')->nullable();
+            $table->integer('customer_status')->nullable();
             $table->unsignedBigInteger('consume_type_id');
+
+            $table->string('registration_address_house')->nullable();
+            $table->string('residence_address_house')->nullable();
+            $table->string('residence_address_appartment')->nullable();
+            $table->string('registration_address_appartment')->nullable();
+            $table->string('notation')->nullable();
+            $table->integer('second_counter')->nullable();
+            $table->integer('cid')->nullable();
+
             $table->timestamps();
         });
     }

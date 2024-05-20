@@ -33,8 +33,7 @@ class User extends Authenticatable implements JWTSubject
 
     protected $casts = [
         'last_auth' => 'datetime',
-        'iin' => 'integer',
-        'status_code' => 'integer'
+        'status_code' => 'integer',
     ];
 
     public function getJWTIdentifier(): mixed

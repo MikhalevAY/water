@@ -13,8 +13,8 @@ return new class extends Migration
             $table->string('last_name', 200);
             $table->string('name', 200);
             $table->string('patronymic', 200);
-            $table->unsignedBigInteger('iin')->nullable()->index();
-            $table->unsignedBigInteger('water_supplier_bin')->nullable();
+            $table->string('iin')->nullable()->index();
+            $table->string('water_supplier_bin')->nullable();
             $table->integer('status_code');
             $table->string('password')->nullable();
             $table->timestamp('last_auth')->nullable();
