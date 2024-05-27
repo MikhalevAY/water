@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class CounterRepository implements CounterRepositoryInterface
 {
 
-    public function getWaterSupplierCustomers(int $bin): Collection
+    public function getWaterSupplierCustomers(string $bin): Collection
     {
         return Counter::query()
             ->select('counters.*')

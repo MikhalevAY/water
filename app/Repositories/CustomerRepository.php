@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class CustomerRepository implements CustomerRepositoryInterface
 {
-    public function getWaterSupplierCustomers(int $bin): Collection
+    public function getWaterSupplierCustomers(string $bin): Collection
     {
         return Customer::WithLastMeterData()->where('water_supplier_bin', $bin)->get();
     }

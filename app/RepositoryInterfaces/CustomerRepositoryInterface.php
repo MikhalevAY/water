@@ -6,5 +6,5 @@ use Illuminate\Support\Collection;
 
 interface CustomerRepositoryInterface
 {
-    public function getWaterSupplierCustomers(int $bin): Collection;
+    public function getWaterSupplierCustomers(string $bin): Collection;
 }

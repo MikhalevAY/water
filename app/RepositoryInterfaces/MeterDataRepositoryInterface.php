@@ -7,7 +7,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface MeterDataRepositoryInterface
 {
-    public function getPaginated(int $bin, int $page): LengthAwarePaginator;
+    public function getPaginated(string $bin, int $page): LengthAwarePaginator;
 
     public function store(array $params): MeterData;
 }

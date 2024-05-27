@@ -16,7 +16,7 @@ class MeterDataService
     {
     }
 
-    public function getPaginated(int $bin, int $page): LengthAwarePaginator
+    public function getPaginated(string $bin, int $page): LengthAwarePaginator
     {
         return $this->repository->getPaginated($bin, $page);
     }

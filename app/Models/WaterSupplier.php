@@ -25,6 +25,7 @@ class WaterSupplier extends Model
     protected $casts = [
         'water_sources' => 'json',
         'validity_period' => 'integer',
+        'bin' => 'string'
     ];
 
     protected function serializeDate(DateTimeInterface $date): string

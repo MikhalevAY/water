@@ -44,6 +44,8 @@ class Customer extends Model
         'account' => 'integer',
         'consume_type_id' => 'integer',
         'water_limit' => 'float',
+        'iin' => 'string',
+        'water_supplier_bin' => 'string',
     ];
 
     protected function serializeDate(DateTimeInterface $date): string

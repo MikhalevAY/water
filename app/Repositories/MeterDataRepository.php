@@ -9,7 +9,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 class MeterDataRepository implements MeterDataRepositoryInterface
 {
 
-    public function getPaginated(int $bin, int $page): LengthAwarePaginator
+    public function getPaginated(string $bin, int $page): LengthAwarePaginator
     {
         return MeterData::query()
             ->with('photos')
