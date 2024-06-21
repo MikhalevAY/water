@@ -12,7 +12,7 @@ class MeterData extends Model
 {
     use HasFactory;
 
-    public const PER_PAGE = 1000;
+    public const PER_PAGE = 2500;
 
     protected $fillable = [
         'customer_account',
